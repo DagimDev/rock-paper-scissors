@@ -9,6 +9,13 @@ const pickComputerMove = () => {
     : "scissors";
 };
 
+// Add score
+let score = {
+  wins: 0,
+  ties: 0,
+  losses: 0,
+};
+
 // basic game outcome logic
 
 const playGame = (playerMove) => {
@@ -28,5 +35,14 @@ const playGame = (playerMove) => {
     else if (computerMove === "paper") result = "You win.";
     else if (computerMove === "scissors") result = "Tie.";
   }
+
+  if (result === "You win.") score.wins++;
+  else if (result === "Tie.") score.ties++;
+  else if (result === "You lose.") score.losses++;
+
+  console.log(
+    `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`
+  );
+
   return result;
 };
