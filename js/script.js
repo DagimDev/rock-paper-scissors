@@ -10,7 +10,8 @@ const pickComputerMove = () => {
 };
 
 // Add score
-let score = {
+// Update and Add localStorage persistence
+let score = JSON.parse(localStorage.getItem("score")) || {
   wins: 0,
   ties: 0,
   losses: 0,
@@ -43,6 +44,9 @@ const playGame = (playerMove) => {
   console.log(
     `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`
   );
+
+  //   Add localStorage persistence
+  localStorage.setItem("score", JSON.stringify(score));
 
   return result;
 };
