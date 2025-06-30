@@ -50,3 +50,13 @@ const playGame = (playerMove) => {
 
   return result;
 };
+
+// Reset score
+const resetScore = () => {
+    score = {
+        wins: 0,
+        ties: 0, 
+        losses: 0
+    }
+    localStorage.removeItem("score");
+}
