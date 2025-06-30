@@ -1,3 +1,7 @@
+const resultElement = document.querySelector(".result");
+const movesElement = document.querySelector(".moves");
+const scoreElement = document.querySelector(".score");
+
 // Computer move selection
 
 const pickComputerMove = () => {
@@ -41,9 +45,14 @@ const playGame = (playerMove) => {
   else if (result === "Tie.") score.ties++;
   else if (result === "You lose.") score.losses++;
 
-  console.log(
-    `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`
-  );
+  //   result
+  resultElement.innerHTML = result;
+
+  //   moves
+  movesElement.innerHTML = `You <img class="move-icons" src="../images/${playerMove}-emoji.png"> - <img  class="move-icons" src="../images/${computerMove}-emoji.png"> Computer`;
+
+  // score
+  scoreElement.innerHTML = `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`;
 
   //   Add localStorage persistence
   localStorage.setItem("score", JSON.stringify(score));
@@ -53,10 +62,11 @@ const playGame = (playerMove) => {
 
 // Reset score
 const resetScore = () => {
-    score = {
-        wins: 0,
-        ties: 0, 
-        losses: 0
-    }
-    localStorage.removeItem("score");
-}
+  score = {
+    wins: 0,
+    ties: 0,
+    losses: 0,
+  };
+  localStorage.removeItem("score");
+  scoreElement.innerHTML = `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`;
+};
