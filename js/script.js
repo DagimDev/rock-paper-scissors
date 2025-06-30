@@ -49,10 +49,10 @@ const playGame = (playerMove) => {
   resultElement.innerHTML = result;
 
   //   moves
-  movesElement.innerHTML = `You <img class="move-icons" src="../images/${playerMove}-emoji.png"> - <img  class="move-icons" src="../images/${computerMove}-emoji.png"> Computer`;
+  movesElement.innerHTML = `You <img class="move-icons" src="../images/${playerMove}-emoji.png"> <img  class="move-icons" src="../images/${computerMove}-emoji.png"> Computer`;
 
   // score
-  scoreElement.innerHTML = `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`;
+  updateScoreElement();
 
   //   Add localStorage persistence
   localStorage.setItem("score", JSON.stringify(score));
@@ -60,6 +60,10 @@ const playGame = (playerMove) => {
   return result;
 };
 
+const updateScoreElement = () => {
+  scoreElement.innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+};
+updateScoreElement();
 // Reset score
 const resetScore = () => {
   score = {
@@ -68,5 +72,5 @@ const resetScore = () => {
     losses: 0,
   };
   localStorage.removeItem("score");
-  scoreElement.innerHTML = `Wins: ${score.wins} Ties: ${score.ties} Losses: ${score.losses}`;
+  updateScoreElement();
 };
