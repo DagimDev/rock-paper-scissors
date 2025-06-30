@@ -49,7 +49,7 @@ const playGame = (playerMove) => {
   resultElement.innerHTML = result;
 
   //   moves
-  movesElement.innerHTML = `You <img class="move-icons" src="../images/${playerMove}-emoji.png"> <img  class="move-icons" src="../images/${computerMove}-emoji.png"> Computer`;
+  movesElement.innerHTML = `You <img class="move-icons" src="./images/${playerMove}-emoji.png"> <img  class="move-icons" src="./images/${computerMove}-emoji.png"> Computer`;
 
   // score
   updateScoreElement();
